@@ -1,0 +1,36 @@
+{
+  "name": "canvas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "overrides": {
+    "postcss": "8.5.23",
+    "sharp": "0.35.3"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv"
+  },
+  "dependencies": {
+    "@ai-sdk/react": "3.0.118",
+    "@openai-oauth/ai-sdk": "2.0.0",
+    "@openai-oauth/react": "2.0.0",
+    "ai": "6.0.116",
+    "next": "16.2.11",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "latest",
+    "@types/node": "20.17.24",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.2",
+    "wrangler": "latest"
+  }
+}
