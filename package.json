@@ -13,7 +13,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "npm run deploy:pages",
+    "deploy:pages": "opennextjs-cloudflare build && node scripts/deploy-pages.mjs",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv"
   },
   "dependencies": {

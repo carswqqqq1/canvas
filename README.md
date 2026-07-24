@@ -42,6 +42,11 @@ CANVAS_MODEL=gpt-5.4-mini
 - Review the `openai-oauth` project and its browser extension before signing in.
 - This project is not affiliated with or endorsed by OpenAI.
 
+## Deploy to Cloudflare Pages
+
+Run `npm run deploy`. The packaging script keeps Next.js static assets out of
+the Pages Worker route so stylesheets and client bundles are served directly.
+
 ## School networks
 
 Canvas is not intended to evade a firewall, content filter, or school policy.
