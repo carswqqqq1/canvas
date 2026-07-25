@@ -5,7 +5,7 @@ import {
   openaiAuthHeaders,
   useSignInWithChatGPT
 } from "@openai-oauth/react";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import {
   CanvasMark,
   ChatIcon,
@@ -45,16 +45,26 @@ const seedMessages: Message[] = [
   }
 ];
 
+function isMobileBrowser() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
 function AuthPanel({
   onClose
 }: {
   onClose: () => void;
 }) {
   const login = useSignInWithChatGPT({ openMode: "popup" });
+  const [mobileBrowser, setMobileBrowser] = useState<boolean | null>(null);
   const busy =
+    mobileBrowser === null ||
     login.status === "checking" ||
     login.status === "starting" ||
     login.status === "redirecting";
+
+  useEffect(() => {
+    setMobileBrowser(isMobileBrowser());
+  }, []);
 
   return (
     <aside className="authPanel" aria-label="ChatGPT sign in">
@@ -74,7 +84,16 @@ function AuthPanel({
           session stays on this device.
         </p>
 
-        {login.isSignedIn ? (
+        {mobileBrowser ? (
+          <div className="mobileAuthNotice" role="status">
+            <strong>Continue on a computer</strong>
+            <p>
+              ChatGPT plan sign-in requires desktop Chrome or Firefox and the
+              Sign in with ChatGPT extension. Mobile browsers cannot complete
+              this OAuth flow.
+            </p>
+          </div>
+        ) : login.isSignedIn ? (
           <div className="signedInBlock">
             <div className="signedInLine">
               <span className="statusDot" />

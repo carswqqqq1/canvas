@@ -584,6 +584,26 @@ a {
   margin-top: 34px;
 }
 
+.mobileAuthNotice {
+  background: var(--blue-pale);
+  border: 1px solid #c9dcf8;
+  border-radius: 8px;
+  margin-top: 34px;
+  padding: 18px;
+}
+
+.mobileAuthNotice strong {
+  display: block;
+  font-size: 15px;
+}
+
+.mobileAuthNotice p {
+  color: #526078;
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 9px 0 0;
+}
+
 @media (max-width: 900px) {
   .appShell {
     grid-template-columns: 76px minmax(0, 1fr);
